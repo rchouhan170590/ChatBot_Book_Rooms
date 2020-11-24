@@ -1,0 +1,33 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say welcome every time the user says thank you
+  steps:
+  - intent: thank_you
+  - action: utter_thank_you
+
+- rule: FAQ
+  steps:
+  - intent: faq
+  - action: utter_faq
+
+- rule: Ask for confirmation when the user wants to stop
+  steps:
+  - intent: unhappy_stop_room_book
+  - action: utter_unhappy_stop_room_book
+
+# - rule: Start a form when user asks - 1
+#   steps:
+#   - intent: book_room
+#   - action: book_room_form
+#
+# - rule: Start a form when user asks - 2
+#   steps:
+#   - intent: clean_room
+#   - action: cleaning_time_form

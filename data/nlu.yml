@@ -1,0 +1,191 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hiiiii
+    - hey
+    - hey!
+    - hello
+    - hi
+    - good morning
+    - yo
+- intent: thank_you
+  examples: |
+    - thanks
+    - thanx
+    - tnq
+    - thank u
+    - thank you
+    - thnks
+- intent: goodbye
+  examples: |
+    - bye bye
+    - cool bye
+    - bye
+    - goodbye
+    - have a nice day
+    - see you later
+    - Thank you. Goodbye
+    - thanx bye
+    - bye thank you
+    - thank you. bye
+- intent: book_room
+  examples: |
+    - I would like to book a room
+    - I would like to book rooms
+    - I want to book a room
+    - I am here to book a room
+    - I would like to book [five](number_of_rooms) rooms
+    - I would like to book a [simple](room_type) room for [five](number_of_visitor) visitors
+    - I would like to book [a](number_of_rooms) [simple](room_type) room for [five](number_of_visitor) people
+    - I want to book [a](number_of_rooms) room for [two](number_of_visitor) people
+
+- intent: num_rooms
+  examples: |
+    - I would like to book [five](number_of_rooms) rooms
+    - please book [two](number_of_rooms) rooms
+    - [two](number_of_rooms) rooms please
+    - [two](number_of_rooms) rooms
+    - can you please [two](number_of_rooms) rooms
+    - could you book [two](number_of_rooms) rooms
+    - hey please book [two](number_of_rooms) rooms
+    - sure please book [two](number_of_rooms) rooms
+    
+- intent: num_visitors
+  examples: |
+    - [three](number_of_visitor) people
+    - [three](number_of_visitor) members    
+    - Please expect [one](number_of_visitor) of us
+    - [three](number_of_visitor) people will be staying
+    - Please consider [two](number_of_visitor) people
+    - Please book for [four](number_of_visitor) people
+    - [three](number_of_visitor) persons
+    - Please expect [two](number_of_visitor) visitors
+    
+- intent: type_of_room
+  examples: |
+    - [Simple](room_type) please
+    - [Deluxe](room_type) please
+    - [Simple](room_type) only
+    - [Deluxe](room_type) only
+    - [Delux]{"entity": "room_type", "value": "deluxe"} room please
+    - I go for [deluxe](room_type) room
+    
+- intent: unhappy_stop_room_book
+  examples: |
+    - I dont want to book the room
+    - don"t want to book
+    - stop
+    - Cancel
+- intent: clean_room
+  examples: |
+    - I am requesting for booking room
+    - I would like to request room cleaning
+    - Please send someone for room cleaning
+    - Please get my room cleaned
+    - Please send someone for room cleaning [right now](cleaning_time)
+    - Please get my room cleaned [after a couple of hours](cleaning_time)
+    - Could you please send someone to clean my room [after half an hour](cleaning_time)
+- intent: clean_room_time
+  examples: |
+    - after [two hours](cleaning_time)
+    - I would like to request room cleaning after [two hours](cleaning_time)
+    - after [a couple of hours](cleaning_time) please
+    - Please send someone [after two hours](cleaning_time)
+    - At [couple of hours after](cleaning_time)
+    - Maybe after [five to ten minutes](cleaning_time)
+    
+- intent: faq/check_in_time
+  examples: |
+    - What are your check in timings
+    - checkin time
+    - checkin timing
+    - At what time is check in done
+    - What time should I check in
+- intent: faq/check_out_time
+  examples: |
+    - What time should we check-out
+    - What are your check-out timings
+    - What are your check out timings
+    - At what time is check out done
+    - What time should I check out
+    
+- intent: faq/procedure_cancel_reservation
+  examples: |
+    - How to cancel a reservation
+    - Cancel a resevation
+    - Cancel a reserved room
+    - Cancel a booked room
+    - How to cancel a booking
+    - Steps to cancel a booking
+- intent: faq/cancel_policy
+  examples: |
+    - What is the cancellation policy
+    - What are your policies for cancellation
+    - Cancellation policy
+    - Cancel policy
+    - Please tell me your cancellation policies
+    - Cancellation policies
+    
+- intent: faq/restaurant
+  examples: |
+    - Do you provide restaurant services
+    - Tell me about your restaurant services
+    - Does the hotel have a restaurant
+    - Is there any restaurant service
+    - Do you have a restaurant
+    
+- intent: faq/breakfast_available
+  examples: |
+    - Is breakfast available
+    - Breakfast in the restaurant
+    - Breakfast in the hotel
+    - Get breakfast in the hotel
+    - Get breakfast in the restaurant
+- intent: faq/breakfast_time
+  examples: |
+    - When do you provide break fast
+    - At what time of the day is breakfast available
+    - What are your breakfast timings
+    - At what time is breakfast given
+    - What time should I have breakfast
+    - When is breakfast served in the restaurant
+    
+- intent: faq/restaurant_time
+  examples: |
+    - What are the restaurant timings
+    - At what time will be the restaurant open
+    - When do restaurant open
+    - Is restaurant open all the time
+    - Timing of the restaurant
+    - is restaurant available in the morning
+- intent: i_am_sure
+  examples: |
+    - yes
+    - sure
+    - please
+    - yeah
+    - yup
+- intent: i_am_not_sure
+  examples: |
+    - no
+    - never
+    - not sure
+    - naah
+    - nope
+    - nah
+    - may be
+- intent: faq
+  examples: |
+    - is restaurant service available
+    - is there any restaurant 
+    - What is the checkin time
+    - is restaurant available
+    
+- synonym: deluxe
+  examples: |
+    - Delux
+    - Deluxe
+    - delux
+    - delx
+    - dlx

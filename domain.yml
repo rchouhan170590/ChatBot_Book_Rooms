@@ -1,0 +1,132 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- faq:
+    is_retrieval_intent: true
+- book_room
+- unhappy_stop_room_book
+- type_of_room
+- i_am_not_sure
+- i_am_sure
+- clean_room
+- clean_room_time
+- num_rooms
+- num_visitors
+- greet
+- goodbye
+- nlu_fallback
+- faq/check_in_time
+- faq/check_out_time
+- faq/procedure_cancel_reservation
+- faq/cancel_policy
+- faq/restaurant
+- faq/breakfast_available
+- faq/breakfast_time
+- faq/restaurant_time
+- thank_you
+entities:
+- cleaning_time
+- number_of_rooms
+- number_of_visitor
+- room_type
+slots:
+  cleaning_time:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  number_of_rooms:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  number_of_visitor:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  requested_slot:
+    type: text
+    influence_conversation: false
+  room_type:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey! Please let me know how can I help you?
+  utter_book_room:
+  - text: Congratulation! Booking Successful! 
+  utter_clean_room:
+  - text: I will send someone to clean the room at {cleaning_time}
+  utter_clean_room_detailed:
+  - text: Sure. Your cleaning is scheduled for {cleaning_time}
+  utter_faq/check_in_time:
+  - text: Check-in time starts at 9 AM (Please carry an identity card!)   Note = contact the reception for early check-in requests. 
+  utter_faq/check_out_time:
+  - text: Check-out time is 6 PM. Please contact the reception for late checkout requests.
+  utter_faq/procedure_cancel_reservation:
+  - text: To cancel a reservation, please visit myhotel.com/bookings.
+  utter_faq/cancel_policy:
+  - text: Please find cancellation policy at myhotel.com/cal%policy2020.
+  utter_faq/restaurant:
+  - text: Please Enjoy your in our cousine at 8th floor!
+  utter_faq/breakfast_available:
+  - text: Please Enjoy your in our cousine at 8th floor! Breakfast @ 9 AM onwards.
+  utter_faq/breakfast_time:
+  - text: Monday through Friday breakfast is 8 am to 10 am. On Saturday and Sunday, we are open from 7 am to 10:30 am.
+  utter_faq/restaurant_time:
+  - text: Our restaurant serves a dazzling 24-hour menu. Please visit us on 7th floor!
+  utter_ask_number_of_visitor:
+  - text: May I know, How people will visit?
+  utter_ask_number_of_rooms:
+  - text: How many rooms shall I book?
+  utter_ask_room_type:
+  - text: Which type of room would you prefer?
+    buttons:
+    - title: Simple
+      # payload: /type_of_room{"room_type":"simple"}
+    - title: Deluxe
+      # payload: /type_of_room{"room_type":"deluxe"}
+  utter_ask_cleaning_time:
+  - text: At what time shall I send someone to clean your room?
+  utter_goodbye:
+  - text: Goodbye. Have a nice day!
+  utter_unhappy_stop_room_book:
+  - text: Are you sure to cancel the booking?
+  - text: Are you sure to cancel the process?
+  utter_i_am_sure:
+  - text: Sure
+  utter_booking_cancelled:
+  - text: Room booking cancelled. Please start over to book the room again in case you change your mind
+  utter_continue:
+  - text: Ok. Continuing
+  utter_thank_you:
+  - text: You are welcome. Please let me know if I can be of any other help
+actions:
+- action_set_book_room
+- action_set_cleaning_time
+- utter_ask_room_type
+- utter_book_room
+- utter_booking_cancelled
+- utter_clean_room
+- utter_clean_room_detailed
+- utter_continue
+- utter_faq
+- utter_goodbye
+- utter_i_am_sure
+- utter_unhappy_stop_room_book
+forms:
+  book_room_form:
+    number_of_rooms:
+    - type: from_entity
+      entity: number_of_rooms
+    number_of_visitor:
+    - type: from_entity
+      entity: number_of_visitor
+    room_type:
+    - type: from_entity
+      entity: room_type
+  cleaning_time_form:
+    cleaning_time:
+    - type: from_entity
+      entity: cleaning_time
+version: '2.0'

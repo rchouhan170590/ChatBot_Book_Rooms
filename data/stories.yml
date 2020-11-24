@@ -1,0 +1,225 @@
+version: "2.0"
+
+stories:
+  - story: Greet the user
+    steps:
+    - intent: greet
+    - action: utter_greet
+
+  - story: Welcome the user 
+    steps:
+    - intent: thank_you
+    - action: utter_thank_you
+
+  - story: interactive_story_1
+    steps:
+    - intent: book_room
+    - action: book_room_form
+    - active_loop: book_room_form
+    - slot_was_set:
+      - requested_slot: number_of_rooms
+    - slot_was_set:
+      - number_of_rooms: two
+    - slot_was_set:
+      - requested_slot: number_of_visitor
+    - slot_was_set:
+      - number_of_visitor: three
+    - slot_was_set:
+      - requested_slot: room_type
+    - slot_was_set:
+      - room_type: deluxe
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_book_room
+    - action: utter_book_room
+
+  - story: interactive_story_2
+    steps:
+    - intent: book_room
+    - action: book_room_form
+    - active_loop: book_room_form
+    - slot_was_set:
+      - requested_slot: number_of_rooms
+    - intent: faq
+    - action: utter_faq
+    - action: book_room_form
+    - slot_was_set:
+      - requested_slot: number_of_rooms
+    - slot_was_set:
+      - number_of_rooms: two
+    - slot_was_set:
+      - requested_slot: number_of_visitor
+    - intent: faq
+    - action: utter_faq
+    - action: book_room_form
+    - slot_was_set:
+      - requested_slot: number_of_visitor
+    - slot_was_set:
+      - number_of_visitor: three
+    - slot_was_set:
+      - requested_slot: room_type
+    - slot_was_set:
+      - room_type: deluxe
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_book_room
+    - action: utter_book_room
+    - intent: clean_room
+    - action: cleaning_time_form
+    - active_loop: cleaning_time_form
+    - slot_was_set:
+      - requested_slot: cleaning_time
+    - slot_was_set:
+      - cleaning_time: after two hours
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_cleaning_time
+    - action: utter_clean_room_detailed
+
+  - story: interactive_story_3
+    steps:
+    - intent: book_room
+    - action: book_room_form
+    - active_loop: book_room_form
+    - slot_was_set:
+      - requested_slot: number_of_rooms
+    - intent: unhappy_stop_room_book
+    - action: utter_unhappy_stop_room_book
+    - intent: i_am_sure
+    - action: action_deactivate_loop
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: utter_i_am_sure
+    - action: utter_booking_cancelled
+
+  - story: interactive_story_4
+    steps:
+    - intent: book_room
+      entities:
+      - number_of_rooms: two
+      - room_type: simple
+      - number_of_visitor: three
+    - action: book_room_form
+    - active_loop: book_room_form
+    - slot_was_set:
+      - number_of_rooms: two
+    - slot_was_set:
+      - number_of_visitor: three
+    - slot_was_set:
+      - room_type: simple
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_book_room
+    - slot_was_set:
+      - number_of_rooms: '2'
+    - slot_was_set:
+      - number_of_visitor: '3'
+
+  - story: interactive_story_5
+    steps:
+    - intent: clean_room_time
+      entities:
+      - cleaning_time: after two hours
+    - action: cleaning_time_form
+    - active_loop: cleaning_time_form
+    - slot_was_set:
+      - cleaning_time: after two hours
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_cleaning_time
+    - action: utter_clean_room_detailed
+
+  - story: interactive_story_6
+    steps:
+    - intent: clean_room_time
+      entities:
+      - cleaning_time: after two hours
+    - action: cleaning_time_form
+    - active_loop: cleaning_time_form
+    - slot_was_set:
+      - cleaning_time: after two hours
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_cleaning_time
+    - slot_was_set:
+      - cleaning_time: 22 hours 49 minutes
+    - action: utter_clean_room_detailed
+
+  - story: interactive_story_7
+    steps:
+    - intent: clean_room
+    - action: cleaning_time_form
+    - active_loop: cleaning_time_form
+    - slot_was_set:
+      - requested_slot: cleaning_time
+    - slot_was_set:
+      - cleaning_time: after a couple of hours
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_cleaning_time
+    - slot_was_set:
+      - cleaning_time: 23 hours 4 minutes
+    - action: utter_clean_room_detailed
+
+  - story: interactive_story_8
+    steps:
+    - intent: book_room
+    - action: book_room_form
+    - active_loop: book_room_form
+    - slot_was_set:
+      - requested_slot: number_of_rooms
+    - intent: unhappy_stop_room_book
+    - action: utter_unhappy_stop_room_book
+    - intent: i_am_sure
+    - action: action_deactivate_loop
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: utter_i_am_sure
+    - action: utter_booking_cancelled
+
+  - story: interactive_story_9
+    steps:
+    - intent: book_room
+      entities:
+      - number_of_rooms: a
+      - number_of_visitor: two
+    - action: book_room_form
+    - active_loop: book_room_form
+    - slot_was_set:
+      - number_of_rooms: a
+    - slot_was_set:
+      - number_of_visitor: two
+    - slot_was_set:
+      - requested_slot: room_type
+    - intent: faq
+    - action: utter_faq
+    - action: book_room_form
+    - slot_was_set:
+      - requested_slot: room_type
+    - intent: unhappy_stop_room_book
+    - action: utter_unhappy_stop_room_book
+    - intent: i_am_not_sure
+    - action: utter_continue
+    - action: book_room_form
+    - slot_was_set:
+      - requested_slot: room_type
+    - slot_was_set:
+      - room_type: deluxe
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_set_book_room
+    - slot_was_set:
+      - number_of_rooms: '1'
+    - slot_was_set:
+      - number_of_visitor: '2'
+    - action: utter_book_room
