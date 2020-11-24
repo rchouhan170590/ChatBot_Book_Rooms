@@ -27,8 +27,6 @@ lookup = {
     'couple': 2,
     'half an': 0.5
 }
-# Numbers beyond twelve are unlikely
-# Numbers beyond 60 will have no value for time
 
 from typing import Dict, Text, Any, List, Union, Optional
 
@@ -85,32 +83,6 @@ class CleaningTimeForm(FormAction):
             tracker: Tracker,
             domain: Dict[Text, Any],
         ) -> List[Dict]:
-        # cleaning_time = ' '.join(tracker.get_slot('cleaning_time')).lower()
-        # now = datetime.now()
-        # if cleaning_time.endswith('now') and not 'after' in cleaning_time.split(' '):
-            # dispatcher.utter_message(template='utter_clean_room', cleaning_time=cleaning_time)
-        # else:
-        #     time_unit = cleaning_time.split(' ')[-1]
-        #     measure = cleaning_time.replace('after','').replace(time_unit, '').strip(' ')
-        #     if 'to' in measure.split(' '):
-        #         measure = measure.split(' ')[-1]
-        #     try:
-        #         int_measure = lookup[measure]
-        #     except KeyError as k:
-        #         print("Key error occured : {}".format(e))
-        #         dispatcher.utter_message(template='utter_clean_room', cleaning_time=cleaning_time)
-        #         return []
-        #     if time_unit.startswith('hour'):
-        #         sched_time = now + timedelta(hour=measure)
-        #         dispatcher.utter_message(template='utter_clean_room_detailed', cleaning_time=str(sched_time.hour))
-        #     elif time_unit.startswith('min'):
-        #         sched_time = now + timedelta(minutes=measure)
-        #         sched_time = str(sched_time.hour) + ' hours ' + sched_time.minute + ' minutes'
-        #         dispatcher.utter_message(template='utter_clean_room_detailed', cleaning_time=sched_time)
-        #     else:
-        #         print("The else section was called")
-        #         dispatcher.utter_message(template='utter_clean_room', cleaning_time=cleaning_time)
-
         return []
 
 class ActionSetBookRoom(Action):
